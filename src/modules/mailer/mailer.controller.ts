@@ -1,9 +1,9 @@
 import {
   Body,
   Controller,
+  Get,
   HttpCode,
   HttpStatus,
-  Post,
   Req,
 } from '@nestjs/common';
 import { MailerService } from './mailer.service';
@@ -12,13 +12,13 @@ import { MailerService } from './mailer.service';
 export class MailerController {
   constructor(private readonly mailerService: MailerService) {}
 
-  @Post()
+  @Get()
   @HttpCode(HttpStatus.OK)
   async send(@Req() req, @Body() body) {
-    const { email } = body;
+    const { email, rewardId } = body;
     console.log('body', body);
     console.log('to', email);
-    // console.log('rewardId', rewardId);
-    return this.mailerService.sendMail(email, "4");
+    console.log('rewardId', rewardId);
+    return this.mailerService.sendMail(email, rewardId);
   }
 }
