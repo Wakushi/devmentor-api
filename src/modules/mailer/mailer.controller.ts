@@ -16,6 +16,7 @@ export class MailerController {
   @HttpCode(HttpStatus.OK)
   async send(@Req() req, @Body() body) {
     const { email, rewardId } = body;
+    console.log('req', req);
     console.log('body', body);
     console.log('to', email);
     console.log('rewardId', rewardId);
