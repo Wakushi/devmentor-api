@@ -25,6 +25,6 @@ export class MailerService {
     };
 
     const info = await this.transporter.sendMail(mailOptions);
-    return info;
+    return {status: 'success', message: info};
   }
 }
