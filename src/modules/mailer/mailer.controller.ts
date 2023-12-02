@@ -10,12 +10,14 @@ import {
 } from '@nestjs/common';
 import { MailerService } from './mailer.service';
 import { FirebaseService } from 'src/firebase/firebase.service';
+import { LockService } from 'src/services/lock.service';
 
 @Controller('mailer')
 export class MailerController {
   constructor(
     private readonly mailerService: MailerService,
-    private firebaseService: FirebaseService,
+    private readonly firebaseService: FirebaseService,
+    private readonly lockService: LockService,
   ) {}
 
   @Post()
@@ -25,6 +27,7 @@ export class MailerController {
     const authHeader = req.headers.authorization;
     const token = authHeader && authHeader.split(' ')[1];
     const secret = process.env.SECRET_KEY;
+
     if (secret !== token) {
       throw new BadRequestException('Invalid token!');
     }
@@ -32,16 +35,30 @@ export class MailerController {
       throw new BadRequestException('Missing resource param!');
     }
 
-    const success = await this.firebaseService.processUuid(uuid, async () => {
-      await this.mailerService.sendMail(email, rewardId);
-    });
-
-    if (!success) {
+    if (!this.lockService.acquireLock(uuid)) {
       return res
         .status(HttpStatus.CONFLICT)
-        .json({ message: 'Request already processed' });
+        .json({ message: 'Request is already being processed.' });
     }
 
-    res.json({ message: 'Email sent successfully' });
+    try {
+      const success = await this.firebaseService.processUuid(uuid, async () => {
+        await this.mailerService.sendMail(email, rewardId);
+      });
+
+      if (!success) {
+        return res
+          .status(HttpStatus.CONFLICT)
+          .json({ message: 'Request already processed' });
+      }
+
+      res.json({ message: 'Email sent successfully' });
+    } catch (error) {
+      throw new BadRequestException(
+        'An error occurred processing your request.',
+      );
+    } finally {
+      this.lockService.releaseLock(uuid);
+    }
   }
 }
