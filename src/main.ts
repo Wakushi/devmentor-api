@@ -3,7 +3,6 @@ import { AppModule } from './app.module';
 import * as dotenv from 'dotenv';
 
 import { NestExpressApplication } from '@nestjs/platform-express';
-import { HttpsOptions } from '@nestjs/common/interfaces/external/https-options.interface';
 
 dotenv.config();
 
