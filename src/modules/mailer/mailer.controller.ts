@@ -31,14 +31,17 @@ export class MailerController {
     if (!email || !rewardId || !uuid) {
       throw new BadRequestException('Missing resource param!');
     }
-    if (await this.firebaseService.isUuidProcessed(uuid)) {
+
+    const success = await this.firebaseService.processUuid(uuid, async () => {
+      await this.mailerService.sendMail(email, rewardId);
+    });
+
+    if (!success) {
       return res
         .status(HttpStatus.CONFLICT)
         .json({ message: 'Request already processed' });
     }
-    const result = await this.mailerService.sendMail(email, rewardId);
 
-    await this.firebaseService.markUuidAsProcessed(uuid);
-    res.json(result);
+    res.json({ message: 'Email sent successfully' });
   }
 }
