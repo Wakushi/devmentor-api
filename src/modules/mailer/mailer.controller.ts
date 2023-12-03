@@ -75,6 +75,6 @@ export class MailerController {
       contact,
       yearsOfExperience,
     );
-    res.json({ message: 'Email sent successfully' });
+    res.json({ message: 'applicationSent' });
   }
 }
