@@ -61,4 +61,20 @@ export class MailerController {
       this.lockService.releaseLock(uuid);
     }
   }
+
+  @Post('application')
+  @HttpCode(HttpStatus.OK)
+  async sendMentorApplication(@Req() req, @Body() body, @Res() res) {
+    const { address, selfIntroduction, contact, yearsOfExperience } = body;
+    if (!address || !selfIntroduction || !contact || !yearsOfExperience) {
+      throw new BadRequestException('Missing resource param!');
+    }
+    await this.mailerService.sendMentorApplication(
+      address,
+      selfIntroduction,
+      contact,
+      yearsOfExperience,
+    );
+    res.json({ message: 'Email sent successfully' });
+  }
 }
