@@ -11,6 +11,7 @@ async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
     cors: true,
   });
+  app.set('trust proxy', true);
 
   const port = process.env.PORT || 3000;
   await app.listen(port);
