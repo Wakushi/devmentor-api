@@ -1,73 +1,44 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+## DEVMENTOR - A Social-Fi dApp for Developers
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+This project was built for the [Chainlink Constellation 2023 Hackathon](https://chain.link/hackathon).
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Inspiration
 
-## Description
+The inspiration for DEVMentor comes from my personal journey. Having been a developer for a year, I've learned immensely from the wealth of resources available. Being driven by passion and curiosity, I've quickly faced higher challenges and many times I wished I had a kind senior engineer next to me or a clone of **Patrick Collins** to get me through the hardest concepts. The idea was cemented on October 23, when [@Pashovkrum](http://twitter.com/Pashovkrum), a senior smart contract auditor, [tweeted](https://x.com/pashovkrum/status/1716405963807240421?s=20): "*I truly believe one of the few secrets of success is having mentor(s)... Learn from people who have done what you would like to do.*"
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## What It Does
 
-## Installation
+**DEVMentor** is a social-fi dApp designed to connect beginners with experienced developers who are eager to teach. This connection can be a huge stress relief for beginners and guide them on a path to success, especially when paired with a learning platform like [Updraft](https://updraft.cyfrin.io/). It also allows experienced developers to reinforce their knowledge by teaching, share their passion and journey, and receive rewards for their engagement.
 
-```bash
-$ npm install
-```
+## How I Built It
 
-## Running the app
+DEVMentor was constructed in three segments:
 
-```bash
-# development
-$ npm run start
+1. **Blockchain-Based Backend:** Utilizing *Solidity*, the *Foundry framework*, *Chainlink libraries*, *Functions-Toolkit*, and the *OpenZeppelin library* for ERC1155, Ownership, and Reentrancy Guards.
+2. **Front-End Development:** Implemented with *NextJS*, *TypeScript*, *Ethers library*, *UUID*, and *Tailwind*.
+3. **NestJS Backend:** Comprising *TypeScript*, *Firebase*, *Nodemailer*, and *Express-rate-limit*.
 
-# watch mode
-$ npm run start:dev
+Additional tools included *Chainlink services* (VRF, Automation, Functions, and Data Feeds), *Pinata IPFS* and *SendGrid*.
 
-# production mode
-$ npm run start:prod
-```
+## Challenges I Encountered
 
-## Test
+One significant challenge was developing a system to match users effectively, incentivize teaching accuracy, and establish a feedback loop. Another was defining the project scope and prioritizing features for a later version, ensuring the core service embodied the intended idea and goals. Designing a logical and secure smart contract architecture, avoiding issues like "stack too deep" or contract size, and automating the distribution of external rewards (e.g., coupon codes from sponsors) in a safe, private manner were among the other challenges.
 
-```bash
-# unit tests
-$ npm run test
+## Accomplishments
 
-# e2e tests
-$ npm run test:e2e
+I'm proud to have built a platform in my first Hackathon that addresses a personal need ! With just one year of experience, I managed to create a fun, engaging dApp that strengthens our community. This project allowed me to give back to the space and its people. Also I'm really proud that Chainlink is my first Hackathon, it means a lot to me.
 
-# test coverage
-$ npm run test:cov
-```
+## What I Learned
 
-## Support
+I learned to leverage *Chainlink Functions* and *Don-Hosted Encrypted secrets* for secure user communication and off-chain rewards. I became more adept at contract architecture, avoiding common pitfalls. Undertaking this project solo taught me to design from scratch, anticipate issues, and secure a smart contract backend while providing a modern, engaging user interface. Finally, I've learned how powerful Chainlink services could be when combined in a meaningful way, and that we still have so much to learn / build playing with these tools.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## What's Next for DEVMentor
 
-## Stay in touch
+Future enhancements for DEVMentor (V2) could include:
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- Implementing *OZ's AccessControl and Roles* for multiple moderators to review mentor applications.
+- Introducing ad placements for sponsors, with automated reward bundling for mentors.
+- Providing rewards for mentees and a lottery system for larger prizes (like full-paid trip to the next big Web3 event ?)
+- Deploying the app on a more cost-effective blockchain and using *CCIP* for cheaper computation.
+- Allowing mentees to tip mentors in their preferred tokens and enabling mentors to select their preferred payment methods. 
 
-## License
-
-Nest is [MIT licensed](LICENSE).
